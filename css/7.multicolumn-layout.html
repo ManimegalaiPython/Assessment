@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Multi-Column Layout</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    /* Flex container */
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap; /* Allows items to wrap to next line */
+      gap: 20px; /* Space between columns */
+      justify-content: center; /* Center items horizontally */
+    }
+
+    /* Flex items / columns */
+    .flex-item {
+      background-color: #fff;
+      padding: 20px;
+      flex: 1 1 250px; /* Grow, shrink, base width */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .flex-item:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Optional: responsive text */
+    .flex-item h2 {
+      margin-bottom: 10px;
+      color: #1f2937;
+    }
+
+    .flex-item p {
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Media query for very small screens */
+    @media (max-width: 500px) {
+      .flex-item {
+        flex: 1 1 100%; /* Single column */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Responsive Multi-Column Layout</h1>
+
+  <div class="flex-container">
+    <div class="flex-item">
+      <h2>Column 1</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae.</p>
+    </div>
+    <div class="flex-item">
+      <h2>Column 2</h2>
+      <p>Curabitur non magna vel ex feugiat finibus. Integer ut nisl nec elit sagittis.</p>
+    </div>
+    <div class="flex-item">
+      <h2>Column 3</h2>
+      <p>Phasellus in leo eget nulla blandit vulputate. Donec quis sapien ac arcu.</p>
+    </div>
+    <div class="flex-item">
+      <h2>Column 4</h2>
+      <p>Fusce facilisis ligula vel libero varius, nec tincidunt arcu tincidunt.</p>
+    </div>
+    <div class="flex-item">
+      <h2>Column 5</h2>
+      <p>Aliquam erat volutpat. Suspendisse potenti. Integer ac dolor nec arcu.</p>
+    </div>
+  </div>
+
+</body>
+</html>

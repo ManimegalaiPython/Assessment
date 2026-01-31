@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Scrolling Example</title>
+  <style>
+    /* Basic styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    h1, p {
+      text-align: center;
+      color: #fff;
+    }
+
+    /* Regular content sections */
+    .content {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #333;
+      color: #fff;
+      font-size: 2rem;
+    }
+
+    /* Parallax section */
+    .parallax {
+      /* Background image */
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80');
+      height: 100vh;
+      background-attachment: fixed; /* This creates the parallax effect */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+
+    /* Optional: Responsive adjustments */
+    @media (max-width: 768px) {
+      .parallax {
+        background-attachment: scroll; /* Fallback for mobile */
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">Section 1: Normal Content</div>
+
+  <div class="parallax">Parallax Background Section</div>
+
+  <div class="content">Section 2: More Content</div>
+</body>
+</html>

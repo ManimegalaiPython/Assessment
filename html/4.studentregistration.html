@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      padding: 20px;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Hide checkbox */
+    #submitToggle {
+      display: none;
+    }
+
+    /* Register button style */
+    .register-btn {
+      display: block;
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #2563eb;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Confirmation message hidden initially */
+    .confirm-message {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e6ffe6;
+      border-radius: 5px;
+      color: #065f46;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Show confirmation after submit */
+    #submitToggle:checked ~ .confirm-message {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h2>Student Registration Form</h2>
+
+    <!-- Registration Form -->
+    <form>
+
+      <!-- Full Name -->
+      <label>Full Name</label>
+      <input type="text" required placeholder="Enter full name">
+
+      <!-- Email -->
+      <label>Email</label>
+      <input type="email" required placeholder="Enter email">
+
+      <!-- Phone -->
+      <label>Phone Number</label>
+      <input type="tel" pattern="[0-9]{10}" required placeholder="10-digit number">
+
+      <!-- Course Dropdown -->
+      <label>Select Course</label>
+      <select required>
+        <option value="">-- Select Course --</option>
+        <option>Computer Science</option>
+        <option>Information Technology</option>
+        <option>Electronics</option>
+        <option>Mechanical</option>
+        <option>Civil</option>
+      </select>
+
+      <!-- Hidden checkbox -->
+      <input type="checkbox" id="submitToggle">
+
+      <!-- Register button -->
+      <label for="submitToggle" class="register-btn">Register</label>
+
+      <!-- Confirmation Message -->
+      <div class="confirm-message">
+        ✅ Registration Successful! <br>
+        Thank you for registering.
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>

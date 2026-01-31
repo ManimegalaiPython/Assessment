@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Tooltip Example</title>
+  <style>
+    /* Basic body styling */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+    }
+
+    /* Tooltip container */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      color: #fff;
+      background-color: #1f2937;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .tooltip:hover {
+      background-color: #374151;
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltip-text {
+      visibility: hidden;
+      width: 180px;
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 8px 12px;
+      border-radius: 5px;
+      position: absolute;
+      bottom: 125%; /* Position above the element */
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Arrow below tooltip */
+    .tooltip .tooltip-text::after {
+      content: "";
+      position: absolute;
+      top: 100%; /* Bottom of tooltip */
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: #111 transparent transparent transparent;
+    }
+
+    /* Show tooltip on hover */
+    .tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) translateY(-5px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tooltip">
+    Hover Me!
+    <div class="tooltip-text">This is a tooltip that appears when hovering over the element.</div>
+  </div>
+
+</body>
+</html>

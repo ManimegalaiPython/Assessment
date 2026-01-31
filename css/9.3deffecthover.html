@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Hover Card Effect</title>
+  <style>
+    /* Basic body styling */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f2f5;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Card container with perspective */
+    .card-container {
+      perspective: 1000px; /* Gives 3D perspective */
+    }
+
+    /* Card styling */
+    .card {
+      background-color: #fff;
+      width: 300px;
+      height: 400px;
+      border-radius: 15px;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      transform-style: preserve-3d; /* Needed for 3D transform */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Card hover effect */
+    .card:hover {
+      transform: rotateY(15deg) rotateX(10deg) scale(1.05);
+      box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Card content */
+    .card h2 {
+      margin-bottom: 15px;
+      color: #1f2937;
+    }
+
+    .card p {
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Optional: image inside card */
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      transform: translateZ(30px); /* Slight pop-out for 3D effect */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Card Image">
+      <h2>3D Hover Card</h2>
+      <p>This card has a subtle 3D tilt and shadow effect when hovered over.</p>
+    </div>
+  </div>
+
+</body>
+</html>

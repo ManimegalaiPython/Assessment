@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Flexbox Layout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+    }
+
+    /* Page wrapper */
+    .page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background-color: #1f2933;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header nav a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Main area */
+    .main {
+      display: flex;
+      flex: 1;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background-color: #111827;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .sidebar a {
+      color: #d1d5db;
+      text-decoration: none;
+    }
+
+    /* Content area */
+    .content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Dashboard cards */
+    .cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 200px;
+      background-color: rgb(242, 237, 237);
+      padding: 20px;
+      border-radius: 6px;
+    }
+
+    /* Content rows */
+    .rows {
+      display: flex;
+      gap: 20px;
+    }
+
+    .row-box {
+      flex: 1;
+      background-color: rgb(249, 241, 241);
+      padding: 20px;
+      border-radius: 6px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1f2933;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .rows {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- Header -->
+    <header>
+      <h2>Admin Dashboard</h2>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Profile</a>
+        <a href="#">Logout</a>
+      </nav>
+    </header>
+
+    <!-- Main Section -->
+    <div class="main">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <a href="#">Dashboard</a>
+        <a href="#">Students</a>
+        <a href="#">Courses</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+      </aside>
+
+      <!-- Content -->
+      <section class="content">
+
+        <!-- Top cards -->
+        <div class="cards">
+          <div class="card">
+            <h3>Total Students</h3>
+            <p>1,250</p>
+          </div>
+          <div class="card">
+            <h3>Courses</h3>
+            <p>24</p>
+          </div>
+          <div class="card">
+            <h3>Admissions</h3>
+            <p>320</p>
+          </div>
+        </div>
+
+        <!-- Content rows -->
+        <div class="rows">
+          <div class="row-box">
+            <h3>Recent Registrations</h3>
+            <p>List of newly registered students.</p>
+          </div>
+          <div class="row-box">
+            <h3>Notifications</h3>
+            <p>System alerts and updates.</p>
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      © 2026 Dashboard System
+    </footer>
+
+  </div>
+
+</body>
+</html>

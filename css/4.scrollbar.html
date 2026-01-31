@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Scrollbar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 200vh; /* To make scrolling visible */
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    p {
+      max-width: 700px;
+      margin: 20px auto;
+      line-height: 1.7;
+    }
+
+    /* WebKit Browsers (Chrome, Edge, Safari) */
+    ::-webkit-scrollbar {
+      width: 14px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #e0e0e0;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #6a11cb, #2575fc);
+      border-radius: 10px;
+      border: 3px solid #e0e0e0;
+      transition: background 0.3s;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #2575fc, #6a11cb);
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+
+    /* Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #6a11cb #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fancy Gradient Scrollbar</h1>
+  
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at nulla a lectus tristique tincidunt. Curabitur sagittis ex id erat scelerisque, vel luctus odio pretium.</p>
+  <p>Phasellus fringilla, orci ac tincidunt facilisis, metus orci bibendum lectus, a posuere nibh quam sed sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+  <p>Integer laoreet leo vitae odio lacinia, ut fermentum turpis finibus. Sed ultricies sapien et diam placerat, in convallis arcu vehicula.</p>
+  <p>Donec faucibus, odio vel dignissim porttitor, nisi augue pulvinar lectus, a blandit ligula sem sed justo. Etiam sed risus id magna fringilla varius.</p>
+  <p>Curabitur vitae arcu nec velit facilisis tincidunt. Suspendisse potenti. Aliquam erat volutpat.</p>
+</body>
+</html>

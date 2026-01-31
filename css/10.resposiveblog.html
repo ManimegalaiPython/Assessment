@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Blog Layout</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Grid container */
+    .container {
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "main sidebar"
+        "footer footer";
+      grid-template-columns: 3fr 1fr; /* Main content 3x sidebar */
+      grid-gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    header {
+      grid-area: header;
+      background-color: #1f2937;
+      color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    main {
+      grid-area: main;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .post img {
+      width: 100%;
+      display: block;
+    }
+
+    .post-content {
+      padding: 15px;
+    }
+
+    .post-content h2 {
+      margin-bottom: 10px;
+      color: #1f2937;
+    }
+
+    .post-content p {
+      color: #555;
+    }
+
+    aside {
+      grid-area: sidebar;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      grid-area: footer;
+      background-color: #1f2937;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .container {
+        grid-template-areas:
+          "header"
+          "main"
+          "sidebar"
+          "footer";
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>My Awesome Blog</h1>
+    </header>
+
+    <main>
+      <div class="post">
+        <img src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68?auto=format&fit=crop&w=600&q=80" alt="Blog 1">
+        <div class="post-content">
+          <h2>Blog Post 1</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae.</p>
+        </div>
+      </div>
+      <div class="post">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Blog 2">
+        <div class="post-content">
+          <h2>Blog Post 2</h2>
+          <p>Curabitur non magna vel ex feugiat finibus. Integer ut nisl nec elit sagittis.</p>
+        </div>
+      </div>
+      <div class="post">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Blog 3">
+        <div class="post-content">
+          <h2>Blog Post 3</h2>
+          <p>Phasellus in leo eget nulla blandit vulputate. Donec quis sapien ac arcu.</p>
+        </div>
+      </div>
+    </main>
+
+    <aside>
+      <h2>About Me</h2>
+      <p>Hello! I write about tech, design, and coding. Follow along for tips and tutorials.</p>
+    </aside>
+
+    <footer>
+      &copy; 2026 My Awesome Blog
+    </footer>
+  </div>
+
+</body>
+</html>

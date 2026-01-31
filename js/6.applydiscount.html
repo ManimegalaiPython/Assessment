@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply Discount Code</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #1f2937;
+    }
+
+    .cart {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    input[type="text"] {
+      padding: 8px 12px;
+      width: 200px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #1f2937;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #374151;
+    }
+
+    .total {
+      text-align: right;
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .message {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: green;
+    }
+
+    .error {
+      color: #dc2626;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Shopping Cart with Discount</h1>
+
+  <div class="cart">
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- Cart items go here -->
+      </tbody>
+    </table>
+
+    <div class="discount">
+      <input type="text" id="discountCode" placeholder="Enter discount code">
+      <button onclick="applyDiscount()">Apply</button>
+      <div id="discountMessage" class="message"></div>
+    </div>
+
+    <div class="total" id="cart-total">Total: $0</div>
+  </div>
+
+  <script>
+    // Sample cart
+    let cart = [
+      { name: 'Product A', price: 50, quantity: 2 },
+      { name: 'Product B', price: 30, quantity: 1 },
+      { name: 'Product C', price: 20, quantity: 3 },
+    ];
+
+    let discountApplied = 0; // Track discount percentage
+
+    // Calculate total
+    function calculateTotal() {
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.quantity;
+      });
+      // Apply discount
+      total = total - (total * discountApplied / 100);
+      return total.toFixed(2);
+    }
+
+    // Render cart
+    function renderCart() {
+      const tbody = document.getElementById('cart-items');
+      tbody.innerHTML = '';
+
+      cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>$${item.price}</td>
+          <td>${item.quantity}</td>
+          <td>$${subtotal}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      document.getElementById('cart-total').innerText = `Total: $${calculateTotal()}`;
+    }
+
+    // Apply discount code
+    function applyDiscount() {
+      const code = document.getElementById('discountCode').value.trim().toUpperCase();
+      const message = document.getElementById('discountMessage');
+
+      // Example: valid codes
+      const validCodes = {
+        "SAVE10": 10,  // 10% discount
+        "OFF20": 20    // 20% discount
+      };
+
+      if (validCodes[code]) {
+        discountApplied = validCodes[code];
+        message.innerText = `Discount applied! ${discountApplied}% off`;
+        message.classList.remove('error');
+      } else {
+        discountApplied = 0;
+        message.innerText = 'Invalid discount code';
+        message.classList.add('error');
+      }
+
+      renderCart();
+    }
+
+    // Initial render
+    renderCart();
+  </script>
+
+</body>
+</html>

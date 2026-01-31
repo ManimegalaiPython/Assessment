@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    input:invalid {
+      border-color: red;
+    }
+
+    input:valid {
+      border-color: green;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Job Application Form</h2>
+    <form action="#" method="post" enctype="multipart/form-data">
+      
+      <!-- Name -->
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" name="name" required placeholder="Enter your full name">
+
+      <!-- Email -->
+      <label for="email">Email *</label>
+<input type="email" id="email" name="email" required
+       placeholder="example@email.com"
+       pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+       title="Enter a valid email address, e.g., user@example.com">
+
+      <!-- Phone -->
+      <label for="phone">Phone *</label>
+      <input type="tel" id="phone" name="phone" required placeholder="123-456-7890"
+             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+      <span class="note">Format: 123-456-7890</span>
+
+      <!-- Resume Upload -->
+      <label for="resume">Upload Resume *</label>
+      <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+      <span class="note">Accepted formats: .pdf, .doc, .docx</span>
+
+      <!-- Cover Letter -->
+      <label for="cover">Cover Letter</label>
+      <textarea id="cover" name="cover" rows="5" placeholder="Write your cover letter (optional)"></textarea>
+
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist Functionality</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #1f2937;
+    }
+
+    .products, .wishlist-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto 50px;
+    }
+
+    .product, .wishlist-product {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #1f2937;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #374151;
+    }
+
+    .wishlist-title {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1f2937;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Products</h1>
+  <div class="products" id="product-list">
+    <!-- Products will appear here -->
+  </div>
+
+  <h2 class="wishlist-title">Your Wishlist</h2>
+  <div class="wishlist-items" id="wishlist-list">
+    <!-- Wishlist items will appear here -->
+  </div>
+
+  <script>
+    // Sample products
+    const products = [
+      { id: 1, name: "Product A", price: 50 },
+      { id: 2, name: "Product B", price: 30 },
+      { id: 3, name: "Product C", price: 20 }
+    ];
+
+    // Wishlist array (from localStorage or empty)
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    const productList = document.getElementById('product-list');
+    const wishlistList = document.getElementById('wishlist-list');
+
+    // Display products
+    function displayProducts() {
+      productList.innerHTML = '';
+      products.forEach(product => {
+        const div = document.createElement('div');
+        div.classList.add('product');
+        div.innerHTML = `
+          <h3>${product.name}</h3>
+          <p>Price: $${product.price}</p>
+          <button onclick="addToWishlist(${product.id})">Add to Wishlist</button>
+        `;
+        productList.appendChild(div);
+      });
+    }
+
+    // Display wishlist
+    function displayWishlist() {
+      wishlistList.innerHTML = '';
+      if (wishlist.length === 0) {
+        wishlistList.innerHTML = '<p style="text-align:center; color:#555;">Your wishlist is empty.</p>';
+        return;
+      }
+
+      wishlist.forEach(product => {
+        const div = document.createElement('div');
+        div.classList.add('wishlist-product');
+        div.innerHTML = `
+          <h3>${product.name}</h3>
+          <p>Price: $${product.price}</p>
+          <button onclick="removeFromWishlist(${product.id})">Remove</button>
+        `;
+        wishlistList.appendChild(div);
+      });
+    }
+
+    // Add product to wishlist
+    function addToWishlist(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!wishlist.some(p => p.id === productId)) {
+        wishlist.push(product);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        displayWishlist();
+        alert(`${product.name} added to wishlist`);
+      } else {
+        alert(`${product.name} is already in wishlist`);
+      }
+    }
+
+    // Remove product from wishlist
+    function removeFromWishlist(productId) {
+      wishlist = wishlist.filter(p => p.id !== productId);
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      displayWishlist();
+    }
+
+    // Initial render
+    displayProducts();
+    displayWishlist();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart Total Calculation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .cart {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      text-align: center;
+    }
+
+    button {
+      padding: 5px 10px;
+      border: none;
+      background-color: #dc2626;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #b91c1c;
+    }
+
+    .total {
+      text-align: right;
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Shopping Cart Total Calculation</h1>
+
+  <div class="cart">
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- Cart items go here -->
+      </tbody>
+    </table>
+    <div class="total" id="cart-total">Total: $0</div>
+  </div>
+
+  <script>
+    // Sample cart array
+    let cart = [
+      { name: 'Product A', price: 10, quantity: 2 },
+      { name: 'Product B', price: 15, quantity: 1 },
+      { name: 'Product C', price: 20, quantity: 3 },
+    ];
+
+    // Function to calculate total
+    function calculateTotal() {
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.quantity;
+      });
+      return total;
+    }
+
+    // Remove item from cart
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    // Update quantity
+    function updateQuantity(index, quantity) {
+      if (quantity < 1) quantity = 1;
+      cart[index].quantity = quantity;
+      renderCart();
+    }
+
+    // Render cart items and total
+    function renderCart() {
+      const tbody = document.getElementById('cart-items');
+      tbody.innerHTML = '';
+
+      cart.forEach((item, index) => {
+        const subtotal = item.price * item.quantity;
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>$${item.price}</td>
+          <td><input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, parseInt(this.value))"></td>
+          <td>$${subtotal}</td>
+          <td><button onclick="removeItem(${index})">Remove</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      document.getElementById('cart-total').innerText = `Total: $${calculateTotal()}`;
+    }
+
+    // Initial render
+    renderCart();
+  </script>
+
+</body>
+</html>

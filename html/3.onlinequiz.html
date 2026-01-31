@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Quiz Application</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      padding: 20px;
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    /* Hide checkbox */
+    #submitToggle {
+      display: none;
+    }
+
+    /* Submit button style */
+    .submit-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2563eb;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Result hidden initially */
+    .result {
+      display: none;
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #e6ffe6;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    /* Show result after submit */
+    #submitToggle:checked ~ .result {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="quiz-container">
+    <h2>Online Quiz</h2>
+
+    <!-- Questions -->
+    <div class="question">
+      <p>1. HTML stands for?</p>
+      <input type="radio" name="q1" required> Hyper Text Markup Language<br>
+      <input type="radio" name="q1"> High Text Machine Language<br>
+      <input type="radio" name="q1"> Hyperlinks Text Mark Language<br>
+    </div>
+
+    <div class="question">
+      <p>2. Which tag is used for JavaScript?</p>
+      <input type="radio" name="q2" required> &lt;css&gt;<br>
+      <input type="radio" name="q2"> &lt;script&gt;<br>
+      <input type="radio" name="q2"> &lt;js&gt;<br>
+    </div>
+
+    <div class="question">
+      <p>3. Which input type allows only one selection?</p>
+      <input type="radio" name="q3" required> checkbox<br>
+      <input type="radio" name="q3"> radio<br>
+      <input type="radio" name="q3"> text<br>
+    </div>
+
+    <!-- Hidden checkbox -->
+    <input type="checkbox" id="submitToggle">
+
+    <!-- Submit button -->
+    <label for="submitToggle" class="submit-btn">Submit Quiz</label>
+
+    <!-- Result Section (appears below) -->
+    <div class="result">
+      ✅ Quiz Submitted Successfully <br><br>
+      <strong>Correct Answers:</strong>
+      <ul>
+        <li>HTML → Hyper Text Markup Language</li>
+        <li>JavaScript Tag → &lt;script&gt;</li>
+        <li>Single selection → radio</li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Rating System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #1f2937;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .product {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .star {
+      font-size: 25px;
+      color: #ccc;
+      transition: color 0.2s;
+    }
+
+    .star.filled {
+      color: #facc15; /* yellow */
+    }
+
+    .average {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #1f2937;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product Rating System</h1>
+
+  <div class="products" id="product-list">
+    <!-- Products will appear here -->
+  </div>
+
+  <script>
+    const products = [
+      { name: "Product A", ratings: [] },
+      { name: "Product B", ratings: [] },
+      { name: "Product C", ratings: [] }
+    ];
+
+    const productList = document.getElementById('product-list');
+
+    // Display products
+    function displayProducts() {
+      productList.innerHTML = '';
+      products.forEach((product, index) => {
+        const div = document.createElement('div');
+        div.classList.add('product');
+
+        // Calculate average rating
+        const avgRating = product.ratings.length
+          ? (product.ratings.reduce((a,b) => a+b,0)/product.ratings.length).toFixed(1)
+          : "No ratings";
+
+        div.innerHTML = `
+          <h3>${product.name}</h3>
+          <div class="stars" id="stars-${index}">
+            ${[1,2,3,4,5].map(star => `<span class="star" data-star="${star}" data-index="${index}">&#9733;</span>`).join('')}
+          </div>
+          <div class="average">Average: ${avgRating}</div>
+        `;
+        productList.appendChild(div);
+      });
+
+      attachStarEvents();
+      fillStars();
+    }
+
+    // Attach click events to stars
+    function attachStarEvents() {
+      const stars = document.querySelectorAll('.star');
+      stars.forEach(star => {
+        star.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          const rating = parseInt(this.dataset.star);
+          products[index].ratings.push(rating);
+          displayProducts();
+        });
+      });
+    }
+
+    // Fill stars based on average
+    function fillStars() {
+      products.forEach((product, index) => {
+        const starsDiv = document.getElementById(`stars-${index}`);
+        const avg = product.ratings.length
+          ? (product.ratings.reduce((a,b)=>a+b,0)/product.ratings.length)
+          : 0;
+        const starSpans = starsDiv.querySelectorAll('.star');
+        starSpans.forEach((star, i) => {
+          if (i < Math.round(avg)) {
+            star.classList.add('filled');
+          } else {
+            star.classList.remove('filled');
+          }
+        });
+      });
+    }
+
+    displayProducts();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smooth Fade-In Text</title>
+  <style>
+    /* Center content vertically and horizontally */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+    }
+
+    /* Container for multiple lines */
+    .fade-container {
+      text-align: center;
+    }
+
+    /* Common style for each line */
+    .fade-line {
+      font-size: 2rem;
+      color: #333;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    /* Delay each line for sequential animation */
+    .fade-line:nth-child(1) { animation-delay: 0.5s; }
+    .fade-line:nth-child(2) { animation-delay: 1s; }
+    .fade-line:nth-child(3) { animation-delay: 1.5s; }
+
+    /* Keyframes for fade-in effect */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Optional: small responsive font adjustment */
+    @media (max-width: 600px) {
+      .fade-line {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="fade-container">
+    <div class="fade-line">Welcome to My Website!</div>
+    <div class="fade-line">We Make Amazing Things Happen.</div>
+    <div class="fade-line">Let's Build Something Great Together.</div>
+  </div>
+</body>
+</html>
